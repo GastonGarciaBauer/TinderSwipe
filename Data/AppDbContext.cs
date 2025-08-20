@@ -10,5 +10,6 @@ namespace TinderSwipe.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Like> Likes { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TinderSwipe.Data;
+using TinderSwipe.Models;
 
 namespace TinderSwipe.Controllers
 {
@@ -28,50 +29,52 @@ namespace TinderSwipe.Controllers
 
         }
 
-        //POST: User/Like
         [HttpPost]
         public IActionResult Like(int id)
         {
-            // Buscás el usuario por id
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            int currentIndex = HttpContext.Session.GetInt32("UserIndex") ?? 0;
+            var users = _context.Users.ToList();
+            var currentUser = users.ElementAtOrDefault(currentIndex);
+            if (currentUser == null)
+                return Content("No hay usuario actual 😢");
 
-            if (user == null)
+            // Crear registro de Like
+            var like = new Like
             {
-                return Content("Usuario no encontrado 😢");
-            }
-
-            // Marcás el Like
-            user.Like = true;
-
-            // Guardás los cambios en la base de datos
+                UserId = currentUser.Id,
+                LikeId = id
+            };
+            _context.Likes.Add(like);
             _context.SaveChanges();
 
-            int currentIndex = (HttpContext.Session.GetInt32("UserIndex") ?? 0) + 1;
+            currentIndex++;
             HttpContext.Session.SetInt32("UserIndex", currentIndex);
-
             return RedirectToAction("Index");
         }
 
-        //POST: User/Dislike
         [HttpPost]
         public IActionResult Dislike(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
-            if (user == null) 
-            {
-                return Content("Usuario no entonctrado 😢");
-            }
+            int currentIndex = HttpContext.Session.GetInt32("UserIndex") ?? 0;
+            var users = _context.Users.ToList();
+            var currentUser = users.ElementAtOrDefault(currentIndex);
+            if (currentUser == null)
+                return Content("No hay usuario actual 😢");
 
-            user.Like = false;
-            
+            // Crear registro de Dislike
+            var like = new Like
+            {
+                UserId = currentUser.Id,
+                DislikeId = id
+            };
+            _context.Likes.Add(like);
             _context.SaveChanges();
 
-            int currentIndex = (HttpContext.Session.GetInt32("UserIndex") ?? 0) + 1;
+            currentIndex++;
             HttpContext.Session.SetInt32("UserIndex", currentIndex);
-
             return RedirectToAction("Index");
-
         }
+
     }
 }
 
