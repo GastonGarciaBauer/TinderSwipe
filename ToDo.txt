@@ -5,4 +5,4 @@
 # Funcionalidad para ver foto de perfil y para poder acceder al perfil y ver el resto de las fotos.
 # Modificar vista para que sea similar a la app real.
 
-para el commit: Elimina campo "Like" de la DB y crea tabla "Likes".
+migrar modificaciones de bd

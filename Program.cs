@@ -9,22 +9,32 @@ namespace TinderSwipe
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Registro los servicios de controladores con vistas
             builder.Services.AddControllersWithViews();
 
+            // Registro la conexión a la base
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
                 )
             );
 
-            // 1. Registrás los servicios
+            // Registro los servicios de sesión
             builder.Services.AddDistributedMemoryCache(); // usa memoria como almacenamiento de sesión
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20); // cuánto dura inactiva
                 options.Cookie.HttpOnly = true;                 // no accesible por JS
                 options.Cookie.IsEssential = true;              // esencial aunque el usuario rechace cookies opcionales
+            });
+
+            // Registro los servicios de Cookies
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // duración por defecto
+                options.SlidingExpiration = true; // renueva la cookie si el usuario está activo
             });
 
             var app = builder.Build();
