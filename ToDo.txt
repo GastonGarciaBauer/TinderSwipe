@@ -1,8 +1,7 @@
-﻿# Sacar campo "Like" de tabla User.
-# Agregar tabla "Likes" que tenga los campos Id, Id_Like, Id_Dislike, Id_User (clave foránea).
+﻿# Sacar campo "Like" de tabla User. ✔️
+# Agregar tabla "Likes" que tenga los campos Id, Id_Like, Id_Dislike, Id_User (clave foránea). ✔️
 # Crear formulario de Login.
 # Agregar más usuarios.
 # Funcionalidad para ver foto de perfil y para poder acceder al perfil y ver el resto de las fotos.
 # Modificar vista para que sea similar a la app real.
-
-migrar modificaciones de bd
+# Migrar modificaciones de bd ✔️
