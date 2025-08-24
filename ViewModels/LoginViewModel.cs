@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TinderSwipe.Models
+namespace TinderSwipe.ViewModels
 {
     public class LoginViewModel
     {
@@ -12,6 +12,8 @@ namespace TinderSwipe.Models
         [Required(ErrorMessage = "La contraseña es obligatoria")]
         [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres")]
         public string Password { get; set;}
+
+        public string ReturnUrl { get; set; }
 
     }
 }

@@ -16,6 +16,11 @@ namespace TinderSwipe.Controllers
         //GET: User/Index
         public IActionResult Index() 
         {
+            if (HttpContext.Session.GetInt32 ("UserId") == null)
+            {
+                Redirect("Login/?returnUrl=/User/Index");
+            }
+            
             int currentIndex = HttpContext.Session.GetInt32("UserIndex") ?? 0;
 
             var users = _context.Users.ToList();

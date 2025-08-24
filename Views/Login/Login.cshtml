@@ -1,1 +1,31 @@
-﻿
+﻿@model TinderSwipe.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form asp-action="Login" method="post">
+    
+    <div class="form-group row">
+            
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+        </div>
+
+        <label for="Password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+        </div>
+
+    </div>
+    
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+
+</form>
