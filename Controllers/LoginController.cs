@@ -19,7 +19,7 @@ namespace TinderSwipe.Controllers
             _context = context;
         }
 
-        // GET
+        // GET: Login
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
@@ -49,7 +49,7 @@ namespace TinderSwipe.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "User");
             }
         }
     }
