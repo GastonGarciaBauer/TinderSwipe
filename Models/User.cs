@@ -16,6 +16,7 @@ namespace TinderSwipe.Models
         [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres")]
         public string Password { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
+        public int Age { get; set; }
         public string Description { get; set; } = string.Empty;
         public string ImgUrl { get; set; } = string.Empty;
     }

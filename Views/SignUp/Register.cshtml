@@ -1,0 +1,51 @@
+﻿@model TinderSwipe.ViewModels.SignUpViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<form asp-action="SignUp" method="post" enctype="multipart/form-data">
+
+    <div class="form-group row">
+
+        <div class="mb-3">
+            <input asp-for="Name" class="form-control" placeholder="Nombre">
+        </div>
+
+        <div class="mb-3">
+            <input asp-for="Email" class="form-control" placeholder="Correo electrónico">
+        </div>
+
+        <div class="mb-3">
+            <input asp-for="Age" type="number" class="form-control" placeholder="Edad" min="18">
+        </div>
+       
+        <div class="mb-3">
+            <input asp-for="ImgFile" type="file" class="form-control" accept="image/*">
+        </div>
+
+        <div class="mb-3">
+            <input asp-for="Password" type="password" class="form-control" placeholder="Contraseña">
+        </div>
+        
+        <div class="mb-3">
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirmar Contraseña">
+        </div>
+
+    </div>
+    
+    <div class="form-check">
+        <input asp-for="Consentimiento" class="form-check-input" type="checkbox" />
+        <label asp-for="Consentimiento" class="form-check-label">
+            Acepto los términos y condiciones
+        </label>
+        <span asp-validation-for="Consentimiento" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Registrarme</button>
+        </div>
+    </div>
+
+</form>

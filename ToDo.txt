@@ -1,7 +1,10 @@
 ﻿# Sacar campo "Like" de tabla User. ✔️
 # Agregar tabla "Likes" que tenga los campos Id, Id_Like, Id_Dislike, Id_User (clave foránea). ✔️
-# Crear formulario de Login.
-# Agregar más usuarios.
+# Crear formulario de Login. ✔️
+# Agregar más usuarios. ✔️
 # Funcionalidad para ver foto de perfil y para poder acceder al perfil y ver el resto de las fotos.
 # Modificar vista para que sea similar a la app real.
 # Migrar modificaciones de bd ✔️
+# Definir un SignUpViewModel con los mismos campos que /Models/User, sumando "Confirmar Contraseña", "Acepto los términos y condiciones"
+# Crear Vista de SignUp.
+# Agregar el campo "Age" en User.
